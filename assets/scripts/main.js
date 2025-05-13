@@ -70,8 +70,7 @@ function initFormHandler() {
    const form = document.querySelector("form")
 	// B3. TODO - Add an event listener for the 'submit' event, which fires when the
 	//            submit button is clicked
-   form.addEventListener("submit", () => {
-
+   form.addEventListener("submit", (e) => {
       const formData = new FormData(form)
       const recipeObject = {}
 
@@ -84,7 +83,7 @@ function initFormHandler() {
       const main = document.querySelector("main")
       main.appendChild(recipeCard)
 
-      const recipes = JSON.parse(localStorage.getItem("recipes"))
+      const recipes = getRecipesFromStorage()
       recipes.push(recipeObject)
       localStorage.setItem("recipes", JSON.stringify(recipes))
    })
